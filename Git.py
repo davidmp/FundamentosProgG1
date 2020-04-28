@@ -22,3 +22,5 @@ z=50
 x=2
 v=5
 print("resultado Division,Multiplicacion z/x*v",(z/x*v))
+
+asfasdasdsadads
