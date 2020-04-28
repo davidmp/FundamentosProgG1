@@ -1,0 +1,5 @@
+git add <sa>
+git status
+git pull
+git commit -a -m "cr"
+git push
