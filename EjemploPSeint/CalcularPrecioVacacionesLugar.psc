@@ -20,4 +20,4 @@ Algoritmo CalcularPrecioTotalVacaciones
 	//Datos de salida
 	Escribir "El costo total de sus vaciones sera: ", costoTotal
 	Escribir "Pasara sus vaciones en: ", lugar
-FinAlgoritmo
+FinAlgoritmo
