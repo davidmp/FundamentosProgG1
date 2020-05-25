@@ -3,10 +3,10 @@ Es posible que el codigo generado no sea completamente correcto. Si encuentra
 errores por favor reportelos en el foro (http://pseint.sourceforge.net). */
 
 // En java, el nombre de un archivo fuente debe coincidir con el nombre de la clase que contiene,
-// por lo que este archivo debería llamarse "CALCULARPROMEDIO.java."
+// por lo que este archivo deberï¿½a llamarse "CALCULARPROMEDIO.java."
 
 import java.io.*;
-import java.math.*;
+
 
 public class CalcularPromedioNotas {
 
