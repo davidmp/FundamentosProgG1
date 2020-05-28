@@ -6,12 +6,15 @@ class EjerciciosCiclicos{
 
   public static void calcularFactorialNNum(){
     BigInteger factorial = BigInteger.valueOf(1);
+    int factorial = 1;
     int numero;
     System.out.print("Ingrese el factorial un Numero:");
     numero=input.nextInt();
     while(numero!= 0) {
         //factorial=(Long)factorial*numero;
         factorial=factorial.multiply(BigInteger.valueOf(numero));
+        factorial*=numero;
+
         numero--;//numero=numero-3; numero-= 2
     }
     System.out.println("El factorial es: "+ factorial); 
