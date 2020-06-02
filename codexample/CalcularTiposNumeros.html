@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Hola HTML</title>
+	<script>
+	
+	function calcularTiposNumeros(){	
+		//Datos de Entrada	
+		var ceros=0, menorCeros=0, mayoresCero=0;
+		var nCantidad=prompt("Introducir la cantidad de nuemros que desea leer:");
+		//Proceso
+		for(contador=1; contador<=nCantidad;contador++){
+			valorNumero=prompt("Ingrese el valor de la posicion "+contador+":");
+			if(valorNumero<0){
+				menorCeros=menorCeros+1;
+			}else if(valorNumero==0){
+				ceros=ceros+1
+			}else{
+			mayoresCero=mayoresCero+1;
+			}	
+		}
+		console.log("La cantidad de numeros menores a 0 es:"+menorCeros);
+		console.log("La cantidad de numeros igual a 0 es:"+ceros);
+		console.log("La cantidad de numeros mayores de 0 es:"+mayoresCero);
+	}
+	
+	calcularTiposNumeros();
+	
+	</script>
+  </head>
+  <body>
+  
+    <p>Hola Mundo!</p>
+  </body>
+  
+</html>
