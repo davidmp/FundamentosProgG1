@@ -75,7 +75,7 @@ public static void calcularInversionCAhorro(){
     continarInv=input.next();
     cantidadA++;
   }while(continarInv.toUpperCase().equals("SI"));
-  System.out.println("El monto Total de capital que tine al final de los años es:"+(inversionTotal+ganacia));
+  System.out.println("El monto Total de capital que tine al final de los años es:"+(inversionTotal));
 }
 
   public static void main(String[] arg){     
