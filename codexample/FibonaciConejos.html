@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Hola HTML</title>
+	<script src="EjerciciosCiclicos.js"></script>
+
+  </head>
+  <body>  
+	<p>Hola Mundo!</p>
+	<canvas height="3000px" width="4000px" id="micanva"></canvas>
+
+	<script>		
+		obj = new EjerciciosCiclicos();
+		//n=prompt("Ingrese el numero para calcular la serie de Fibonaci:");
+		//console.log("Resultado:"+obj.fibonaciRecur(n));
+		var canvas=document.getElementById("micanva");
+		var ctx=canvas.getContext("2d");
+		var img=new Image();
+		img.src="conejo3.png";
+
+		img.onload=function(){
+			var cantidad=prompt("Ingrese la cantidad de Meses:");
+			var result=0;
+			var incx=0;
+			var incy=0;
+			for(i=1; i<=cantidad; i++){
+				result=obj.fibonaciRecur(i);
+				ctx.font="bold 22px sans-serif";
+				for(j=1;j<=result;j++){
+					ctx.drawImage(img,incx,incy);
+					ctx.fillText("c"+j,incx+15,incy+15);
+					incx=incx+100;
+				}
+				incx=0;
+				incy=incy+100;
+			}
+		}
+
+	</script>	
+
+  </body>
+  
+</html>

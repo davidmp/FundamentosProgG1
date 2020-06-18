@@ -21,7 +21,14 @@ class EjerciciosCiclicos{
         console.log("La cantidad de numeros mayores de 0 es:"+mayoresCero);
         
     }
-}
 
-obj = new EjerciciosCiclicos();
-obj.calcularTiposNumeros();
+    fibonaciRecur(numero){
+        if(numero<2){
+            return numero;
+        }else{
+            console.log("f(n-1):"+(numero-1)+" f(n-2):"+(numero-2));
+            return this.fibonaciRecur(numero-1)+this.fibonaciRecur(numero-2);
+        }
+    }
+
+}

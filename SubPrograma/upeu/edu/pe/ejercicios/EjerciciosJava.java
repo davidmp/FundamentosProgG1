@@ -33,10 +33,11 @@ public class EjerciciosJava {
       
     public long fibonaciRecur(int numero){
       if(numero<2){
-        return numero;
+        return numero;        
       }else{
+        System.out.println("f(n-1):"+(numero-1)+" f(n-2):"+(numero-2));
         return fibonaciRecur(numero-1)+fibonaciRecur(numero-2);
-      }
+      }      
     }
       //6.2
       public void factorialEntreRangoNumeros(int numInit, int numFinal){
