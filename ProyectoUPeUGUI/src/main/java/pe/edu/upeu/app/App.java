@@ -3,6 +3,7 @@ package pe.edu.upeu.app;
 import java.util.Scanner;
 
 import pe.edu.upeu.arreglos.ArreglosPractica;
+import pe.edu.upeu.utils.LeerTeclado;
 
 /**
  * Hello world!
@@ -12,6 +13,7 @@ public class App {
 
    static Scanner leer=new Scanner(System.in);
     public static void main( String[] args ){
+        LeerTeclado teclado=new LeerTeclado();
         System.out.println( "Sistema de Pruebas *****" );        
         String opcion="SI";
         int numAlg;
@@ -22,9 +24,8 @@ public class App {
           "4=xxxxx";
 
         do{
-          System.out.println(algoritmosNombres);
-          System.out.println("Ingrese el Algoritmo que desea probar: ");
-          numAlg=leer.nextInt();
+          System.out.println(algoritmosNombres);          
+          numAlg=teclado.leer(0,"Ingrese el Algoritmo que desea probar: ");
           switch(numAlg){
             case 1:         
             new MainGUI();
@@ -34,9 +35,8 @@ public class App {
             obj.imprimirContenidoVector(obj.calcularNumAlCuadrado());
             break;
             default: System.out.println("Num de Algoritmo no existe!!"); break;
-          }
-          System.out.println("Desea probar mas algoritmos? SI/NO ");
-          opcion=leer.next();    
+          }          
+          opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  
         }while(opcion.equals("SI"));  
     }
 }
