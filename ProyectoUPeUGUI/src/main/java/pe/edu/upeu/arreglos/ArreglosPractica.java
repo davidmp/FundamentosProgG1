@@ -34,7 +34,8 @@ public class ArreglosPractica {
         int[] vector=new int[thamano];
         if(tipoLlenado.toUpperCase().equals("ALEATORIO")){
             for(int indice=0; indice<vector.length;indice++){
-                vector[indice]=(int)Math.round(Math.random()*100);
+                //vector[indice]=(int)Math.round(Math.random()*100);
+                vector[indice]=generatRandoPostNegtValue(thamano, thamano);
             }            
         }else{
             for(int indice=0; indice<vector.length;indice++){
@@ -43,5 +44,30 @@ public class ArreglosPractica {
         }        
         return vector;
     }
+
+    public void contabilizarCerosPostvoNegtElemVector(int[] vector){
+        int contador=0;
+        int cantCeros=0, cantNegativo=0, cantPositivo=0;
+        while(contador<vector.length){
+            if(vector[contador]<0){
+                cantNegativo++;
+            }else if(vector[contador]==0){
+                cantCeros++;
+            }else{
+                cantPositivo++;
+            }
+            contador++;
+        }
+        System.out.println("La cantidad de Elementos Negaticos es:"+cantNegativo);
+        System.out.println("La cantidad de Elementos Iguales a 0 son:"+cantCeros);
+        System.out.println("La cantidad de Elementos positivos son:"+cantPositivo);
+    }
+
+
+    public int generatRandoPostNegtValue(int min,int max) {              
+        int numero = -min + (int) (Math.random() * ((max - (-min)) + 1)); 
+        return numero;
+    }
+
 
 }

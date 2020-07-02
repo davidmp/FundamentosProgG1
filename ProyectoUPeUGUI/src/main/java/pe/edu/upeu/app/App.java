@@ -21,8 +21,9 @@ public class App {
           "1=GUI Fibonaci Conejos\n"+
           "2=Cuadrado de 100 primeros numeros\n"+
           "3=SumaElemtoVector MediaAritmetica\n"+
-          "4=xxxxx";
+          "4=Contabiliza Elementos Vector (ceros, positivos, negativos)";
           ArreglosPractica obj;
+          int[] vector;
         do{
           System.out.println(algoritmosNombres);          
           numAlg=teclado.leer(0,"Ingrese el Algoritmo que desea probar: ");
@@ -36,11 +37,18 @@ public class App {
             break;
             case 3:         
             obj=new ArreglosPractica();
-            int[] vector=obj.ingresarDatosVector(teclado.leer(0, "Ingrese el Tamanho del Vector"), "aleatorio");
+             vector=obj.ingresarDatosVector(teclado.leer(0, "Ingrese el Tamanho del Vector"), "aleatorio");
             obj.imprimirContenidoVector(vector);
             obj.sumaElemMediaAritVector(vector);
             //obj.imprimirContenidoVector();
-            break;            
+            break;    
+            case 4:         
+            obj=new ArreglosPractica();
+            vector=obj.ingresarDatosVector(teclado.leer(0, "Ingrese el Tamanho del Vector"), "aleatorio");
+            obj.imprimirContenidoVector(vector);
+            obj.contabilizarCerosPostvoNegtElemVector(vector);
+            
+            break;                     
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  
