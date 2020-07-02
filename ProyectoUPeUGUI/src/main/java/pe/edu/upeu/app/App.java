@@ -21,7 +21,9 @@ public class App {
           "1=GUI Fibonaci Conejos\n"+
           "2=Cuadrado de 100 primeros numeros\n"+
           "3=SumaElemtoVector MediaAritmetica\n"+
-          "4=Contabiliza Elementos Vector (ceros, positivos, negativos)";
+          "4=Contabiliza Elementos Vector (ceros, positivos, negativos)\n"+
+          "5=Ejemplo Matrices\n"+
+          "6=Matriz Identidad";
           ArreglosPractica obj;
           int[] vector;
         do{
@@ -48,7 +50,26 @@ public class App {
             obj.imprimirContenidoVector(vector);
             obj.contabilizarCerosPostvoNegtElemVector(vector);
             
-            break;                     
+            break;    
+            case 5:{
+              int[][] matriz=new int[2][2];
+              matriz[0][0]=1;
+              matriz[0][1]=0;
+              matriz[1][0]=0;
+              matriz[1][1]=1;
+              
+              for(int indiceF=0;indiceF<matriz.length;indiceF++){
+                  for(int indiceC=0;indiceC<matriz[0].length;indiceC++){
+                    System.out.print(matriz[indiceF][indiceC]+"\t");
+                  }
+                  System.out.println("");
+              }
+
+            } break; 
+            case 6: obj=new ArreglosPractica();   
+                    obj.imprimeMatriz(obj.matrizIdentidad(teclado.leer(0, "Ingrese la Dimension de la matriz:")));
+            break;
+            
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  

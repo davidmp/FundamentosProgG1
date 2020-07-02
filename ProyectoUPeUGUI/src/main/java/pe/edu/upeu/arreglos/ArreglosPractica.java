@@ -69,5 +69,28 @@ public class ArreglosPractica {
         return numero;
     }
 
+    public int[][] matrizIdentidad(int dimension){
+        int[][] matrizI=new int[dimension][dimension];
+        for(int indiceF=0; indiceF<matrizI.length; indiceF++){
+            for(int indiceC=0; indiceC<matrizI[0].length; indiceC++){
+            if(indiceF==indiceC){
+                matrizI[indiceF][indiceC]=1;
+            }else{ 
+                matrizI[indiceF][indiceC]=0;
+            }
+            }
+        }
+        return matrizI;
+    }
+
+    public void imprimeMatriz(int[][] matriz){
+        for(int indiceF=0; indiceF<matriz.length; indiceF++){
+            for(int indiceC=0; indiceC<matriz[0].length; indiceC++){
+            System.out.print(matriz[indiceF][indiceC]+"\t");
+            }
+            System.out.println("");
+        }        
+    }
+
 
 }
