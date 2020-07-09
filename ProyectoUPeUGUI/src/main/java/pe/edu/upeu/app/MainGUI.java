@@ -1,6 +1,9 @@
 package pe.edu.upeu.app;
 
 import javax.swing.JFrame;
+
+import pe.edu.upeu.dao.AppCrud;
+import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.UtilsX;
 import java.awt.event.*;
 import javax.swing.*;
@@ -56,13 +59,18 @@ public class MainGUI extends JFrame implements ActionListener{
 
     public void reporteDatos(Container contai){
         String[] columns = new String[] {
-            "Id", "Name", "Hourly Rate", "Part Time"
+            "Dni", "Nombre", "Telefono", "Direccion"
         };         
         Object[][] data = new Object[][] {
             {1, "John", 40.0, false },
             {2, "Rambo", 70.0, false },
             {3, "Zorro", 60.0, true },
-        };        
+        }; 
+        
+        AppCrud crudObj=new AppCrud();
+        LeerArchivo archObj=new LeerArchivo("Clientes.txt");
+        data= crudObj.listarContenido(archObj);
+
         table = new JTable(data, columns);         
         scrollPane = new JScrollPane(table);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
