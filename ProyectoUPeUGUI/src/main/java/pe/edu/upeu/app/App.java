@@ -3,6 +3,9 @@ package pe.edu.upeu.app;
 import java.util.Scanner;
 
 import pe.edu.upeu.arreglos.ArreglosPractica;
+import pe.edu.upeu.dao.AppCrud;
+import pe.edu.upeu.modelo.Clientes;
+import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
 
 /**
@@ -25,6 +28,8 @@ public class App {
           "5=Ejemplo Matrices\n"+
           "6=Matriz Identidad";
           ArreglosPractica obj;
+          AppCrud crudObj;
+          LeerArchivo archObj;
           int[] vector;
         do{
           System.out.println(algoritmosNombres);          
@@ -69,7 +74,18 @@ public class App {
             case 6: obj=new ArreglosPractica();   
                     obj.imprimeMatriz(obj.matrizIdentidad(teclado.leer(0, "Ingrese la Dimension de la matriz:")));
             break;
+            case 7:
+            crudObj=new AppCrud();
+            archObj=new LeerArchivo("Clientes.txt");
+            Clientes clienteTO=new Clientes();
+            clienteTO.setDniId(teclado.leer("", "Ingrese el dni:"));
+            clienteTO.setNombreApellidos(teclado.leer("","Ingrese el nombre completo:"));
+            clienteTO.setNumTelf(teclado.leer("","Ingrese el numero de celular:"));
+            clienteTO.setDireccion(teclado.leer("","Ingrese la direccion donde vive:"));
+            crudObj.crearContenido(archObj, clienteTO);
+            crudObj.imprimirLista(crudObj.listarContenido(archObj));
             
+            break;
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  
