@@ -8,6 +8,15 @@ import pe.edu.upeu.utils.LeerArchivo;
 
 public class AppCrud {
     
+    public int numColumna(LeerArchivo aq, Object modelo){
+        Field[] fields = (modelo).getClass().getDeclaredFields();
+        int numColum=0;
+        for(Field field : fields) {
+            numColum++;
+        }
+        return numColum;
+    }
+
     public void crearContenido(LeerArchivo aq, Object modelo){	      
         List<String> lista = new ArrayList<>();
         String contenido="";
@@ -37,8 +46,10 @@ public class AppCrud {
 
     public Object[][] agregarContenido(LeerArchivo aq, Object modelo){
         Object[][] datosAnt=listarContenido(aq);
-        Object[][] datosNew=new Object[datosAnt.length+1][datosAnt[0].length];
-        for (int i = 0; i < datosAnt.length; i++) {
+        int tamanho=(datosAnt==null?0:datosAnt.length);
+        int numColum=numColumna(aq, modelo);
+        Object[][] datosNew=new Object[tamanho+1][numColum];
+        for (int i = 0; i < tamanho; i++) {
             for(int j = 0;j<datosAnt[0].length;j++){
                 datosNew[i][j]=datosAnt[i][j];
             }

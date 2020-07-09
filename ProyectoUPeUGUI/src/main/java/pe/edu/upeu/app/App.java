@@ -82,9 +82,9 @@ public class App {
             clienteTO.setNombreApellidos(teclado.leer("","Ingrese el nombre completo:"));
             clienteTO.setNumTelf(teclado.leer("","Ingrese el numero de celular:"));
             clienteTO.setDireccion(teclado.leer("","Ingrese la direccion donde vive:"));
-            crudObj.crearContenido(archObj, clienteTO);
+            crudObj.agregarContenido(archObj, clienteTO);
             crudObj.imprimirLista(crudObj.listarContenido(archObj));
-            
+
             break;
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          

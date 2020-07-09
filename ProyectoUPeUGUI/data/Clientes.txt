@@ -1,1 +1,2 @@
-43631917	David Mamani Pari	951782520	Av. Selva Alegre
+43631917	David Mamani	951782520	Av. Selva Alegre
+43631520	Juan Perez	951782530	Av. La Torre
