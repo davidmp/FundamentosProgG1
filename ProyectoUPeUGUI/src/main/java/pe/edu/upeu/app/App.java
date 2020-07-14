@@ -5,6 +5,7 @@ import java.util.Scanner;
 import pe.edu.upeu.arreglos.ArreglosPractica;
 import pe.edu.upeu.dao.AppCrud;
 import pe.edu.upeu.modelo.Clientes;
+import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
 
@@ -13,7 +14,7 @@ import pe.edu.upeu.utils.LeerTeclado;
  *
  */
 public class App {
-  static LeerTeclado teclado;
+  static LeerTeclado teclado=new LeerTeclado();
   static AppCrud crudObj;
   static LeerArchivo archObj;
 
@@ -33,7 +34,7 @@ public class App {
     }
 }
 
-  public static Object[][] crearCliente(){
+  public static Object[][] crearCliente(){    
     crudObj=new AppCrud();
     archObj=new LeerArchivo("Clientes.txt");
     Clientes clienteTO=new Clientes();
@@ -45,6 +46,14 @@ public class App {
     return crudObj.agregarContenido(archObj, clienteTO);
   }
 
+  public static Object[][] crearProducto(){
+    crudObj=new AppCrud();
+    archObj=new LeerArchivo("Productos.txt");
+    Productos prodTO=new Productos();
+    prodTO.setProductoId(teclado.leer("", "Ingrese el codigo de Tipo de Productos:"));
+    prodTO.setNombreProd(teclado.leer("", "Ingrese del nombre de tipo de Producto:"));    
+    return crudObj.agregarContenido(archObj, prodTO);
+  }
 
     public static void main( String[] args ){
         teclado=new LeerTeclado();
@@ -59,7 +68,8 @@ public class App {
           "5=Ejemplo Matrices\n"+
           "6=Matriz Identidad\n"+
           "7=Crear Cliente\n"+
-          "8=Listar cliente";
+          "8=Listar cliente\n"+
+          "9=Crear Productos";
           ArreglosPractica obj;
 
           int[] vector;
@@ -119,7 +129,12 @@ public class App {
             archObj=new LeerArchivo("Clientes.txt");
             crudObj.imprimirLista(crudObj.listarContenido(archObj));
             break;
+            case 9:
+            clearConsole();
+            crudObj=new AppCrud();
+            crudObj.imprimirLista(crearProducto());  
 
+            break;
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  
