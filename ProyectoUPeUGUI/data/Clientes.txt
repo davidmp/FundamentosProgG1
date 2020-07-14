@@ -1,2 +1,5 @@
 43631917	David Mamani	951782520	Av. Selva Alegre
 43631520	Juan Perez	951782530	Av. La Torre
+42631547	Diego Burgos Pari	951215420	Av. Los Geranios
+21543265	Raul Gomez apaza	655487541	AV. Argentina
+54879854	Cesar Apaza Qusipe	87542148	Av. Los Alpes

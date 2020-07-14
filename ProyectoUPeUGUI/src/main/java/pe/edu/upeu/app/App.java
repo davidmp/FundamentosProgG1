@@ -13,10 +13,41 @@ import pe.edu.upeu.utils.LeerTeclado;
  *
  */
 public class App {
+  static LeerTeclado teclado;
+  static AppCrud crudObj;
+  static LeerArchivo archObj;
 
-   static Scanner leer=new Scanner(System.in);
+  static Scanner leer=new Scanner(System.in);
+
+  public final static void clearConsole(){
+    try{            
+        final String os = System.getProperty("os.name");    
+        if (os.contains("Windows")){
+           new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        }else{
+            new ProcessBuilder("bash", "-c", "clear").inheritIO().start().waitFor();
+        }
+    }
+    catch (final Exception e){
+       System.out.println("Error: "+e.getMessage());
+    }
+}
+
+  public static Object[][] crearCliente(){
+    crudObj=new AppCrud();
+    archObj=new LeerArchivo("Clientes.txt");
+    Clientes clienteTO=new Clientes();
+    clienteTO.setDniId(teclado.leer("", "Ingrese el dni:"));
+    clienteTO.setNombreApellidos(teclado.leer("","Ingrese el nombre completo:"));
+    clienteTO.setNumTelf(teclado.leer("","Ingrese el numero de celular:"));
+    clienteTO.setDireccion(teclado.leer("","Ingrese la direccion donde vive:"));   
+    clearConsole();     
+    return crudObj.agregarContenido(archObj, clienteTO);
+  }
+
+
     public static void main( String[] args ){
-        LeerTeclado teclado=new LeerTeclado();
+        teclado=new LeerTeclado();
         System.out.println( "Sistema de Pruebas *****" );        
         String opcion="SI";
         int numAlg;
@@ -26,10 +57,11 @@ public class App {
           "3=SumaElemtoVector MediaAritmetica\n"+
           "4=Contabiliza Elementos Vector (ceros, positivos, negativos)\n"+
           "5=Ejemplo Matrices\n"+
-          "6=Matriz Identidad";
+          "6=Matriz Identidad\n"+
+          "7=Crear Cliente\n"+
+          "8=Listar cliente";
           ArreglosPractica obj;
-          AppCrud crudObj;
-          LeerArchivo archObj;
+
           int[] vector;
         do{
           System.out.println(algoritmosNombres);          
@@ -71,21 +103,23 @@ public class App {
               }
 
             } break; 
-            case 6: obj=new ArreglosPractica();   
+            case 6: 
+            clearConsole();
+                    obj=new ArreglosPractica();   
                     obj.imprimeMatriz(obj.matrizIdentidad(teclado.leer(0, "Ingrese la Dimension de la matriz:")));
             break;
             case 7:
+            clearConsole();
+            crudObj=new AppCrud();
+            crudObj.imprimirLista(crearCliente());
+            break;
+            case 8:
+            clearConsole();
             crudObj=new AppCrud();
             archObj=new LeerArchivo("Clientes.txt");
-            Clientes clienteTO=new Clientes();
-            clienteTO.setDniId(teclado.leer("", "Ingrese el dni:"));
-            clienteTO.setNombreApellidos(teclado.leer("","Ingrese el nombre completo:"));
-            clienteTO.setNumTelf(teclado.leer("","Ingrese el numero de celular:"));
-            clienteTO.setDireccion(teclado.leer("","Ingrese la direccion donde vive:"));
-            crudObj.agregarContenido(archObj, clienteTO);
             crudObj.imprimirLista(crudObj.listarContenido(archObj));
-
             break;
+
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  
