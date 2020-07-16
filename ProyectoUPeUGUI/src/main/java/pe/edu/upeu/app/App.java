@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import pe.edu.upeu.arreglos.ArreglosPractica;
 import pe.edu.upeu.dao.AppCrud;
+import pe.edu.upeu.dao.PedidosDao;
 import pe.edu.upeu.modelo.Clientes;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
@@ -133,8 +134,15 @@ public class App {
             clearConsole();
             crudObj=new AppCrud();
             crudObj.imprimirLista(crearProducto());  
-
             break;
+            case 10:
+            clearConsole();
+            PedidosDao pedDao=new PedidosDao();
+            pedDao.registrarPedido();
+            clearConsole();
+            pedDao.reportarPedidos();
+            break;
+
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  

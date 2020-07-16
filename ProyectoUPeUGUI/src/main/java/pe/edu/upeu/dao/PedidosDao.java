@@ -15,8 +15,9 @@ public class PedidosDao extends AppCrud{
             System.out.print(productos[i][0]+"="+productos[i][1]+", ");
         }
         System.out.println("");
-        pedTO=new Pedidos();        
-        pedTO.setPedidoId(generarPedidoId(leerArch, 0));
+        pedTO=new Pedidos(); 
+        pedTO.setPedidoId(generarPedidoId(0));
+        leerArch=new LeerArchivo("Productos.txt");
         pedTO.setProductoId(teclado.leer("", "Ingrese el Codigo del Producto:"));
         productos=buscarContenido(leerArch, 0, pedTO.getProductoId());
         pedTO.setDescripcionPed(productos[0][1].toString());
@@ -27,13 +28,23 @@ public class PedidosDao extends AppCrud{
         return agregarContenido(leerArch, pedTO);
     }
 
-    public String generarPedidoId(LeerArchivo leerArch, int columna){
-        Object[][] data=listarContenido(leerArch);
+    public String generarPedidoId(int columna){
+        Object[][] data=listarContenido(new LeerArchivo("Pedidos.txt"));
         int serie=1;
-        if(data!=null){
-            serie=Integer.parseInt(data[data.length-1][columna].toString().substring(1))+1;
-        }         
+        try {
+            if(data!=null){
+                serie=Integer.parseInt(data[data.length-1][columna].toString().substring(1))+1;
+            }     
+        } catch (Exception e) {
+            System.err.println("Error:"+e.getMessage());
+        }
         return "P"+serie;
+    }
+
+    public void reportarPedidos(){
+        System.out.println("*****************Pedidos Realizados*****************");
+        leerArch=new LeerArchivo("Pedidos.txt");
+        imprimirLista(listarContenido(leerArch));
     }
 
 
