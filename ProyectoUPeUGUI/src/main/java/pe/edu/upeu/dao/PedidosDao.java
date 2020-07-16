@@ -1,5 +1,9 @@
 package pe.edu.upeu.dao;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import pe.edu.upeu.modelo.Pedidos;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
@@ -7,11 +11,12 @@ import pe.edu.upeu.utils.LeerTeclado;
 
 public class PedidosDao extends AppCrud{
     Pedidos pedTO;
+    SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     LeerArchivo leerArch;
     LeerTeclado teclado=new LeerTeclado();    
     public Object[][] registrarPedido(){        
         leerArch=new LeerArchivo("Productos.txt");
-
+        
         Object[][] productos=listarContenido(leerArch);
         if(productos!=null){
             for(int i=0;i<productos.length;i++){
@@ -26,7 +31,9 @@ public class PedidosDao extends AppCrud{
             pedTO.setDescripcionPed(productos[0][1].toString());
             pedTO.setCantidad(teclado.leer(0.0, "Ingrese la cantidad del producto:"));
             pedTO.setPrecioUnit(teclado.leer(0.0, "Ingrese el precio Producto:"));
-            pedTO.setPrecioTotal(pedTO.getCantidad()*pedTO.getPrecioUnit());
+            pedTO.setPrecioTotal(pedTO.getCantidad()*pedTO.getPrecioUnit()); 
+            pedTO.setFechaRegPed(formateador.format(new Date()));           
+        
             leerArch=new LeerArchivo("Pedidos.txt");
         }else{
             crearProducto();

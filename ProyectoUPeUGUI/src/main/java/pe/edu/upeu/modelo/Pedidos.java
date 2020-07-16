@@ -1,5 +1,7 @@
 package pe.edu.upeu.modelo;
 
+import java.util.*;
+
 public class Pedidos {
     public String pedidoId;
     public String productoId;
@@ -7,6 +9,7 @@ public class Pedidos {
     public double cantidad;
     public double precioUnit;
     public double precioTotal;
+    public String fechaRegPed;
 
     public String getPedidoId() {
         return pedidoId;
@@ -54,6 +57,14 @@ public class Pedidos {
 
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
+    }
+
+    public String getFechaRegPed() {
+        return fechaRegPed;
+    }
+
+    public void setFechaRegPed(String fechaRegPed) {
+        this.fechaRegPed = fechaRegPed;
     }
 
     
