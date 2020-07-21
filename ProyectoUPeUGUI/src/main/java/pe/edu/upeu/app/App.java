@@ -72,7 +72,7 @@ public class App {
           "8=Listar cliente\n"+
           "9=Crear Productos";
           ArreglosPractica obj;
-
+          PedidosDao pedDao;
           int[] vector;
         do{
           System.out.println(algoritmosNombres);          
@@ -137,12 +137,16 @@ public class App {
             break;
             case 10:
             clearConsole();
-            PedidosDao pedDao=new PedidosDao();
+            pedDao=new PedidosDao();
             pedDao.registrarPedido();
             clearConsole();
             pedDao.reportarPedidos();
             break;
-
+            case 11:
+            pedDao=new PedidosDao();
+            clearConsole();
+            pedDao.reportePedidoFecha(teclado.leer("", "Ingrese la fecha (dd-MM-yyyy)"));
+            break;
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  

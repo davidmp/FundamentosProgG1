@@ -76,5 +76,34 @@ public class PedidosDao extends AppCrud{
         imprimirLista(listarContenido(leerArch));
     }
 
+    public Object[][] reportePedidoFecha(String fecha){
+        leerArch=new LeerArchivo("Pedidos.txt");
+        Object[][] dataGobal=listarContenido(leerArch);
+        Object[][] dataNew=null;
+        int numFilas=0;
+        if(dataGobal!=null){
+            for(int fila=0; fila<dataGobal.length;fila++){
+                String[] fechaCompleta=dataGobal[fila][6].toString().split(" ");
+                if(fechaCompleta[0].equals(fecha)){
+                    numFilas++;
+                }
+            }
+            dataNew=new Object[numFilas][dataGobal[0].length];
+            int filaX=0, comulnaX=0;
+            for(int fila=0;fila<dataGobal.length;fila++){
+                String[] fechaCompleta=dataGobal[fila][6].toString().split(" ");
+                if(fechaCompleta[0].equals(fecha)){
+                    for(int columna=0;columna<dataGobal[0].length;columna++){                    
+                        dataNew[filaX][comulnaX]=dataGobal[fila][columna];
+                        comulnaX++;
+                    }
+                    filaX++; 
+                    comulnaX=0;  
+                }
+            }
+        }
+        imprimirLista(dataNew);
+        return dataNew;
+    }
 
 }

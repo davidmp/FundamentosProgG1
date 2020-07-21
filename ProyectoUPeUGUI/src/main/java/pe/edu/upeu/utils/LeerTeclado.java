@@ -9,7 +9,7 @@ public class LeerTeclado {
         try {
             System.out.println(mensaje);
             dato=Integer.parseInt(leerT.readLine());
-        } catch (IOException e) {
+        } catch (IOException e) {            
             System.err.println(e.getMessage());
         }
         return dato;
