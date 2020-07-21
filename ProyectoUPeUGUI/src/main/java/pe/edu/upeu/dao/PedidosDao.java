@@ -76,6 +76,7 @@ public class PedidosDao extends AppCrud{
         imprimirLista(listarContenido(leerArch));
     }
 
+    
     public Object[][] reportePedidoFecha(String fecha){
         leerArch=new LeerArchivo("Pedidos.txt");
         Object[][] dataGobal=listarContenido(leerArch);
