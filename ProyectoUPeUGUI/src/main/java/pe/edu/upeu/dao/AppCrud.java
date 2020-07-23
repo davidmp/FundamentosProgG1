@@ -98,20 +98,23 @@ public class AppCrud {
                 String[] column=(lista2.get(i).toString()).split("\t");
                 if(column[numIdColumModelo].equals(dato)){ numFilasX=i; break; }
             }
+           
             if(numFilasX>=0){
             int primero=0;
             for(Field field : fields) {
+                
                 String fieldName = field.getName();
-                Object fieldValue = field.get(modelo);                
-                if(!fieldValue.equals(null) && !fieldValue.equals("") && numIdColumModelo!=primero && !fieldValue.equals(0) && !fieldValue.equals(0.0)){
+                
+                Object fieldValue = field.get(modelo);                            
+                if(fieldValue!=null && !fieldValue.equals("") && numIdColumModelo!=primero && !fieldValue.equals(0) && !fieldValue.equals(0.0)){
                     datosAnt[numFilasX][primero]=fieldValue;
-                }                
+                }            
                 System.out.println(fieldName + ":"+ fieldValue);
                 primero++;
             }            
             }
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println("Errorr:"+e.getMessage());
         }
         lista2 = new ArrayList<>();	
         String contenido="";

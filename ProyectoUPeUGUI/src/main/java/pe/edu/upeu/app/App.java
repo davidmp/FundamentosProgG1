@@ -6,6 +6,7 @@ import pe.edu.upeu.arreglos.ArreglosPractica;
 import pe.edu.upeu.dao.AppCrud;
 import pe.edu.upeu.dao.PedidosDao;
 import pe.edu.upeu.modelo.Clientes;
+import pe.edu.upeu.modelo.Pedidos;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
@@ -147,6 +148,33 @@ public class App {
             clearConsole();
             pedDao.reportePedidoFecha(teclado.leer("", "Ingrese la fecha (dd-MM-yyyy)"));
             break;
+            case 12:
+            pedDao=new PedidosDao();
+            pedDao.reportarPedidos();
+            
+            System.out.println("******************Modificar Pedido******");                    
+            pedDao=new PedidosDao();
+            pedDao.editarRegistroPedido();
+            pedDao=new PedidosDao();
+            pedDao.reportarPedidos();            
+            break;
+            case 13:
+            pedDao=new PedidosDao();
+            pedDao.reportarPedidos();
+            pedDao=new PedidosDao();
+            pedDao.eliminarPedido();
+            clearConsole();
+            pedDao.reportarPedidos();
+            break;
+            case 14:
+            pedDao=new PedidosDao();
+            clearConsole();
+            pedDao.reportePedidoRangoFecha(
+              teclado.leer("", "Ingrese Fecha Inicio (dd-MM-yyyy)"), 
+              teclado.leer("", "Ingrese Fecha Final (dd-MM-yyyy)"));
+            break;
+
+
             default: System.out.println("Num de Algoritmo no existe!!"); break;
           }          
           opcion=teclado.leer("","Desea probar mas algoritmos? SI/NO");  
